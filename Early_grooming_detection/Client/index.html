@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conversation analyzer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar panel">
+      <h2 class="sidebar-title">Saved</h2>
+      <button type="button" id="new-conv-btn" class="sidebar-new">+ New conversation</button>
+      <ul id="conversation-list" class="conversation-list" aria-label="Saved conversations"></ul>
+    </aside>
+
+    <main class="main">
+      <header>
+        <h1>Conversation analyzer</h1>
+        <p id="current-title" class="subtitle">New conversation</p>
+      </header>
+
+      <section class="panel target-panel">
+        <span class="target-label">Add block to:</span>
+        <label class="target-option">
+          <input type="radio" name="target" value="new" checked />
+          New conversation
+        </label>
+        <label class="target-option" id="existing-target-label">
+          <input type="radio" name="target" value="existing" disabled />
+          Current conversation
+        </label>
+      </section>
+
+      <section class="panel chat">
+        <div id="blocks-container" class="blocks-container" aria-live="polite">
+          <p class="empty-hint">No blocks yet. Paste a conversation below.</p>
+        </div>
+
+        <form id="add-form" class="composer">
+          <label for="conversation-block" class="block-label">
+            Conversation block
+            <span class="format-hint">One line per message: <code>Name: text</code></span>
+          </label>
+          <textarea
+            id="conversation-block"
+            rows="8"
+            placeholder="Alice: Hi there&#10;Bob: Hello!&#10;Alice: How are you?"
+            spellcheck="false"
+          ></textarea>
+          <button type="submit">Add block</button>
+        </form>
+
+        <div class="actions">
+          <button type="button" id="analyze-btn" class="primary" disabled>Analyze conversation</button>
+        </div>
+      </section>
+
+      <section id="result-panel" class="panel result hidden" aria-live="polite">
+        <h2>Analysis result</h2>
+        <div id="result-summary" class="result-summary"></div>
+        <div id="flagged-block" class="flagged-block hidden">
+          <h3>Most contributing messages</h3>
+          <ul id="flagged-list"></ul>
+        </div>
+        <details id="more-details" class="more">
+          <summary>More</summary>
+          <div id="more-content" class="more-content"></div>
+        </details>
+      </section>
+
+      <p id="error" class="error hidden" role="alert"></p>
+    </main>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.min.js"></script>
+  <script src="db.js"></script>
+  <script src="api.js"></script>
+  <script src="crypto.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,11 +1,8 @@
-# Early Grooming Detection Using Language and Emotion Analysis
+# EGD
+## Early Grooming Detection Using Language and Emotion Analysis
 
 A hybrid deep learning system for the **early detection of online grooming conversations**, combining transformer-based semantic embeddings with fine-grained emotional representations from GoEmotions.
 
-> Diploma Thesis — Babeș-Bolyai University Cluj-Napoca, Faculty of Mathematics and Computer Science
-> Author: Teodora-Elena Cătănaș · Supervisor: Lect. PhD. Diana-Laura Borza · 2026
-
----
 
 ## Overview
 
